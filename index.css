@@ -1,0 +1,109 @@
+body{
+    margin: 0;
+    padding: 0;
+    
+}
+#dash{
+    align-items: center;
+    display: flex;
+    list-style: none;
+    justify-content: space-between;
+}
+
+#heroVid{
+    display: default;   
+    object-fit:cover;
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    max-width: 100%;
+    min-height: 100%;
+}
+.header{
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-top: 2%;
+    
+}
+nav{
+    padding: 10px 20px;
+    box-shadow: 1px 2px 2px 1px rgba(0,0,0,0.2);
+    position: relative;
+}
+nav li {
+    font-size: 25px;
+    color: #ea1111;
+    border: none;
+    background-color: none;
+    position: relative;
+    cursor: pointer;
+    transition: 0.5s;
+}
+nav li::after{
+    content: '';
+    width: 0;
+    height: 3px;
+    background:#4fc3dc;
+    position: absolute;
+    bottom: -6px;
+    left:0;
+    transition: 0.7s;
+}
+nav li:hover::after{
+    width:100%;
+    filter:hue-rotate(10deg)
+}
+nav li:hover{
+    color: rgb(252, 173, 103);
+    transform: translateY(-5px);
+    opacity: 0.5;
+    transition: opacity 0.6s, transform 0.6s, color 1s;
+}
+.hero{
+    
+    position: relative;
+    padding: 10px 50px;
+    margin-top: 20%;
+    font-size: 30px;
+}
+.add{
+    display: none;
+}
+.info{
+    display: none;
+}
+.hero h3{
+    display: inline-block;
+    color: orange;
+    overflow: hidden; 
+    border-right: .15em solid orange; 
+    white-space: nowrap; 
+    margin: 0 auto;
+    letter-spacing: .10em;
+    animation: 
+      typing 3.5s steps(55, end),
+      blink-caret .75s step-end infinite;
+    margin-bottom: 0.5%;
+}
+.hero h2{
+    color:  #f35531;
+}
+@keyframes typing {
+    from { width: 0 }
+    to { width: 70% }
+  }
+  
+@keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: orange; }
+  }
+
+.hidden{
+    display: none;
+}
+.active{
+    display: default;
+}
+.dummyText{
+    position: relative;
+}

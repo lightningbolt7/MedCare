@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+
+<html>
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>MED</title>
+        <link rel="stylesheet" href="./index.css">
+    </head>
+    <body>
+        <video autoplay muted loop id="heroVid"  >
+            <source src="./herovid.mp4" preload="true" type="video/mp4">
+        </video>
+       
+        <div class="container">
+            <div class="header">
+                <nav id="dash">
+                   
+                    <li id="2" class="active">Home</li>
+                    <li id="3">Info</li>
+                </nav>
+            </div>
+            <div id="home" class="view">
+                <div class="hero">
+                    <h2> Welcome to MedCare: Streamlining Care with a Single Click</h2>
+                    <h3>One Click, Infinite Care!</h3>
+    
+                </div>
+            </div>
+            <div id="info">
+
+
+
+                <!DOCTYPE html>
+                <html lang="en">
+                <head>
+                    <meta charset="UTF-8">
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                    <link rel="preconnect" href="https://fonts.googleapis.com">
+                    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+                    <link href="https://fonts.googleapis.com/css2?family=Happy+Monkey&family=Open+Sans&display=swap" rel="stylesheet">
+                    <title>Patient Dashboard</title>
+                    <style>
+                        body {
+                            font-family: 'Open Sans';
+                            margin: 0;
+                            padding: 20px;
+                            background-color: #c8eff1;
+                        }
+                        .patient-dashboard {
+                            display: grid;
+                            grid-template-columns: repeat(3, 1fr);
+                            gap: 20px;
+                        }
+                        .patient-box {
+                            background: linear-gradient(to bottom, #FED9B7, #FED9B7);
+                            
+                            border: 1px solid ;
+                            border-radius: 8px;
+                            padding: 10px;
+                            display: grid;
+                            grid-template-rows: repeat(5, auto);
+                            gap: 10px;
+                        }
+                        .patient-box > div {
+                            border: 1px solid #ddd;
+                            border-radius: 8px;
+                            padding: 10px;
+                            background-color: #f9f9f9;
+                        }
+                        .patient-title {
+                            text-align: center;
+                            font-weight: bold;
+                            background-color: black;
+                            border: none;
+                        }
+                        h2 {
+                            text-align: center;
+                        }
+                        .patient-button {
+                            background-color: #c8eff1;
+                            border-color: #FED9B7;
+                            border-radius: 4px;
+                        }
+                    </style>
+                </head>
+                <body>
+                    <h2>Patient Dashboard</h2>
+                    <div class="patient-dashboard">
+                        <!-- Repeat this section for each patient box -->
+                        <div class="patient-box">
+                            <button onclick="location.href='patientCareTracker.html'; start(0);">Add Patient Info</button>
+                            <div class="patient-title">Patient 1</div>
+                            <div id="patient0name">Patient Name: [Name]</div>
+            <div id="patient0ID">Patient ID: [ID]</div>
+            <div id="patient0Meal">Due for Meal: [Time/Status]</div>
+            <div id="due0ID">Due for Adjustment: [Time/Status]</div>
+            <div id="sugar0">Blood Sugar: </div>
+        </div>
+
+        <div class="patient-box">
+            <button onclick="location.href='patientCareTracker.html';start(1);">Add Patient Info</button>
+                        <div class="patient-title">Patient 2</div>
+                            <div id="patient1name">Patient Name: David Copernicus</div>
+                            <div id="patient1ID">Patient ID: 734621</div>
+                            <div style="color: red;">Due for Meal: Y</div>
+                            <div style="color: green;">Due for Adjustment: N</div>
+                            <div style="color: green;">Blood Sugar: In Normal Bounds</div>
+                        </div>
+                
+                        <div class="patient-box">
+                            <button id= "ptInfo1" onclick="location.href='patientCareTracker.html'">Add Patient Info</button>
+                            <div class="patient-title">Patient 3</div>
+                            <div>Patient Name: David Bowie</div>
+                            <div>Patient ID: 123456</div>
+                            <div style="color: red;">Due for Meal: Y </div>
+                            <div style="color: green;">Due for Adjustment: N</div>
+                            <div style="color: red;">Blood Sugar: High</div>
+                        </div>
+                
+                        <div class="patient-box">
+                            <button class="patient-button" onclick="location.href='patientCareTracker.html'">Add Patient Info</button>
+                            <div class="patient-title">Patient 4</div>
+                            <div>Patient Name: Max Verstappen</div>
+                            <div>Patient ID: 686868</div>
+                            <div style="color: green;">Due for Meal: N </div>
+                            <div style="color: green;">Due for Adjustment: N </div>
+                            <div style="color: green;">Blood Sugar: In Normal Bounds</div>
+                        </div>
+                
+                        <div class="patient-box">
+                            <button class="patient-button" onclick="location.href='patientCareTracker.html'">Add Patient Info</button>
+                            <div class="patient-title">Patient 5</div>
+                            <div>Patient Name: Lando Calrissian</div>
+                            <div>Patient ID: 321933</div>
+                            <div style="color: green;">Due for Meal: N </div>
+                            <div style="color: red;">Due for Adjustment: Y </div>
+                            <div style="color: red;">Blood Sugar: Low</div>
+                        </div>
+                
+                        <div class="patient-box">
+                            <button class="patient-button" onclick="location.href='patientCareTracker.html'" ">Add Patient Info</button>
+                            <div class="patient-title">Patient 6</div>
+                            <div>Patient Name: Paul Atreides</div>
+                            <div>Patient ID: 463626</div>
+                            <div style="color: green;">Due for Meal: N </div>
+                            <div style="color: green;">Due for Adjustment: N </div>
+                            <div style="color: green;">Blood Sugar: In Normal Bounds</div>
+                        </div>
+                        
+                    </div>
+                
+                </body>
+                </html>
+
+
+    </div>
+            
+        </div>
+        <script src="index.js"></script>
+    </body>
+</html>

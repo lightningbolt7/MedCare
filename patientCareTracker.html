@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Care Tracker</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 30px; /* Remove default margin */
+            height: 100vh; /* Full viewport height */
+            display: flex; /* Enable flexbox */
+            flex-direction: column; /* Stack items vertically */
+            align-items: center; /* Center items horizontally */
+            justify-content: center; /* Center items vertically */
+            background: linear-gradient(to right bottom, #C8EFF1 0%, #F07167 100%);
+            padding: 20px;
+            max-width: 100%;
+        }
+        .container {
+            width: 100%; /* Set to the desired width */
+            max-width: 3000px; /* Maximum width of the container */
+            display: flex; /* Enable flexbox */
+            flex-direction: column; /* Stack items vertically */
+            align-items: center; /* Center items horizontally */
+        }
+        .input-group {
+            margin-bottom: 10px;
+        }
+        .input-label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .input-field,
+        .input-field-small {
+            padding: 8px;
+            margin-bottom: 10px;
+            border-radius: 4px; /* Rounded corners for input fields */
+        }
+        .input-field {
+            width: 20%;
+            padding-top: 5%;
+            padding-bottom: 5%;
+        }
+        .input-field-name {
+            width: 100%;
+            padding-top: 5%;
+            padding-bottom: 5%;
+        }
+        .input-field-small {
+            width: 30%; /* Adjust the width to fit two fields in a line */
+            margin-right: 5px; /* Space between the input fields */
+        }
+        #rotation-alert {
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: red; 
+        }
+        #rotation-counter {
+            padding-left: 50px;
+            font-weight: bold;
+            font-family: 'Roboto', sans-serif; /* This is just an example */
+            font-size: 24px;
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+        .fed {
+            color: green;
+        }
+        .meal-section {
+            margin-bottom: 10px;
+        }
+        .meal-btn {
+            padding: 5px 10px;
+            border: none;
+            color: white;
+            margin-left: 5px;
+            border-radius: 4px; /* Rounded corners for buttons */
+        }
+        .no-fed {
+            background-color: red;
+        }
+        .yes-fed {
+            background-color: green;
+        }
+        .urgent-message,
+        .sugar-msg {
+            color: red;
+            margin-left: 10px;
+            display: none;
+        }
+        .sugar-msg {
+            color: green; /* Default color, assuming normal levels */
+        }
+        .rotated{
+            border:none;
+            cursor: pointer;
+        }
+        .addPageHead{
+            padding-bottom: 5%;
+        }
+        /* Add a class to your button for specific styling */
+    .big-button {
+        padding: 10px 20px; /* Larger padding */
+        font-size: 1em; /* Larger font size */
+        border-radius: 8px; /* Rounded corners - adjust as needed */
+        cursor: pointer; /* Change cursor to pointer on hover */
+        border: 2px solid #007bff; /* Solid border */
+        background-color: #007bff; /* Background color */
+        color: white; /* Text color */
+        transition: background-color 0.3s, transform 0.3s; /* Smooth transition for hover effects */
+    }
+
+    .big-button:hover {
+        background-color: #0056b3; /* Darker shade on hover */
+        transform: scale(1.05); /* Slightly enlarge the button when hovering */
+    }
+
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 id="addPageHead">Patient Care Tracker</h1>
+
+        <div class="input-group">
+            <label for="patient-name"  class="input-label">Patient Name:</label>
+            <input type="text" id="patient0name" class="input-field-name" placeholder="Enter patient's name">
+        </div>
+
+        <div class="input-group">
+            <label for="patient-id" class="input-label">Patient ID:</label>
+            <input type="text" id="patient0id" class="input-field-name" placeholder="Enter patient's ID">
+        </div>
+        <div>
+            <button id="saveInfoPatient" class="big-button" onclick="start(0)">Save value</button>
+        </div>
+        <!-- Rotation Tracking -->
+        <div class="input-group">
+            <label class="input-label">Time Since Last Rotation:</label>
+            <input type="number" id="rotation-hours" class="input-field-small" placeholder="Hours">
+            <input type="number" id="rotation-minutes" class="input-field-small" placeholder="Minutes">
+            <button onclick="resetRotationTimer()" class="big-button">Enter</button>
+        </div>
+
+        <!-- Rotation Counter Display -->
+        <div class="input-group" id="rotation-status">
+            <div id="rotation-alert">URGENT: Time for PT rotation</div>
+            <div id="rotation-counter">00:00:00</div>
+            <button id="rotated" onclick="zeroRotationTimer()" class="big-button">Patient was Rotated</button>
+        </div>
+
+        <!-- Meal Tracking -->
+        <div class="input-group">
+            <h2>Meal and Blood Sugar Tracker</h2>
+            <div class="meal-section" id="breakfast-section">
+                <span>Breakfast (before 7 AM)</span>
+                <button id="breakfast-btn" class="meal-btn no-fed" onclick="toggleMeal('breakfast')">NO</button>
+                <input type="number" id="breakfast-sugar" class="input-field-small blood-sugar" placeholder="Blood Sugar (mg/dL)" oninput="checkBloodSugar('breakfast'); ">
+                <span id="breakfast-sugar-msg" class="sugar-msg"></span>
+                <span id="breakfast-urgent" class="urgent-message">URGENT: Forgotten Meal </span>
+            </div>
+            
+            <div class="meal-section" id="lunch-section">
+                <span>Lunch (before 12 PM)</span>
+                <button id="lunch-btn" class="meal-btn no-fed" onclick="toggleMeal('lunch')">NO</button>
+                <input type="number" id="lunch-sugar" class="input-field-small blood-sugar" placeholder="Blood Sugar (mg/dL)" oninput="checkBloodSugar('lunch'); ">
+                <span id="lunch-sugar-msg" class="sugar-msg"></span>
+                <span id="lunch-urgent" class="urgent-message">URGENT: Forgotten Meal</span>
+            </div>
+
+            <div class="meal-section" id="dinner-section">
+                <span>Dinner (before 5 PM)</span>
+                <button id="dinner-btn" class="meal-btn no-fed" onclick="toggleMeal('dinner')">NO</button>
+                <input type="number" id="dinner-sugar" class="input-field-small blood-sugar" placeholder="Blood Sugar (mg/dL)" oninput="checkBloodSugar('dinner');">
+                <span id="dinner-sugar-msg" class="sugar-msg"></span>
+                <span id="dinner-urgent" class="urgent-message">URGENT: Forgotten Meal</span>
+            </div>
+        </div>
+
+        <div class="input-group">
+            <button onclick="location.href='index.html';" class="big-button">Back to Dashboard</button>
+        </div>
+
+        <script src="index.js"></script>
+    </div>
+</body>
+</html>
